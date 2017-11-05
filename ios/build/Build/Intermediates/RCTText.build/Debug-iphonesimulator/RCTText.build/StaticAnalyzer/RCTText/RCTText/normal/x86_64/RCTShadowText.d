@@ -1,0 +1,37 @@
+dependencies: \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTShadowText.m \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTShadowText.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAccessibilityManager.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFont.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView+Layout.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUIManager.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTShadowRawText.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTText.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTTextView.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTTextInput.h \
+  /Users/ahagen/sandbox/react-native-snap-carousel/example/node_modules/react-native/Libraries/Text/RCTBackedTextInputViewProtocol.h

@@ -1,5 +1,12 @@
 {
+  "name": "example",
+  "displayName": "example",
   "expo": {
-    "sdkVersion": "22.0.0"
-  }
+    "name": "example",
+    "slug": "example",
+    "sdkVersion": "22.0.0",
+    "android": {
+        "package": "io.github.alexhagen"
+      }
+  },
 }
