@@ -5,6 +5,7 @@
     "name": "example",
     "slug": "example",
     "sdkVersion": "22.0.0",
+    "icon": "./icon.png",
     "android": {
         "package": "io.github.alexhagen"
       }
