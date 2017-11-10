@@ -54,15 +54,12 @@ export default StyleSheet.create({
     },
     textContainer: {
         justifyContent: 'center',
-        paddingTop: 20 - entryBorderRadius,
+        paddingTop: 10 - entryBorderRadius,
         paddingBottom: 20,
         paddingHorizontal: 16,
         backgroundColor: 'white',
         borderBottomLeftRadius: entryBorderRadius,
         borderBottomRightRadius: entryBorderRadius
-    },
-    textContainerEven: {
-        backgroundColor: colors.black
     },
     title: {
         color: colors.black,
@@ -78,6 +75,17 @@ export default StyleSheet.create({
         color: colors.gray,
         fontSize: 12,
         fontStyle: 'italic'
+    },
+    number: {
+      color: colors.black,
+      fontSize: 20,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      paddingTop: 0
+    },
+    numberContainer: {
+      paddingTop: 0,
+      marginTop: 0
     },
     subtitleEven: {
         color: 'rgba(255, 255, 255, 0.7)'

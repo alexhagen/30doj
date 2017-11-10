@@ -14,9 +14,13 @@
 		"expo": "^22.0.2",
 		"react": "16.0.0-beta.5",
 		"react-native": "~0.49.3",
+		"react-native-countdown": "0.0.3",
 		"react-native-icon": "^0.2.10",
 		"react-native-linear-gradient": "^2.3.0",
-		"react-native-snap-carousel": "3.3.3"
+		"react-native-notifications": "^1.1.17",
+		"react-native-push-notification": "^3.0.1",
+		"react-native-snap-carousel": "3.3.3",
+		"react-native-video": "^2.0.0"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

@@ -1,9 +1,9 @@
 {
-  "name": "example",
-  "displayName": "example",
+  "name": "30 Days of Justine",
+  "displayName": "30!",
   "expo": {
-    "name": "example",
-    "slug": "example",
+    "name": "30 Days of Justine",
+    "slug": "30-days-of-justine",
     "sdkVersion": "22.0.0",
     "icon": "./icon.png",
     "android": {
