@@ -48,12 +48,19 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     slider: {
-        marginTop: 25
+      position: 'absolute',
+      top: 320
     },
     sliderContentContainer: {
     },
     paginationContainer: {
-        paddingVertical: 8
+        paddingVertical: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 580,
+        left: 0,
+        right: 0
     },
     paginationDot: {
         width: 8,

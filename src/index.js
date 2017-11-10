@@ -9,7 +9,7 @@ import { ENTRIES1 } from 'example/src/static/entries';
 import { Video } from 'expo';
 import { Constants, Permissions, Notifications } from 'expo';
 
-const SLIDER_1_FIRST_ITEM = 1;
+const SLIDER_1_FIRST_ITEM = 0;
 
 export default class example extends Component {
 
@@ -37,18 +37,20 @@ export default class example extends Component {
               // link (optional) (string) — external link to open when notification is selected.
             }
           };
-        //let t = new Date();
-        //t.setSeconds(t.getSeconds() + 10);
-        let t = (new Date()).getTime() + 5000;
+        let t = new Date();
+        t.setSeconds(t.getSeconds() + 10);
         const schedulingOptions = {
-            time: t // (date or number) — A Date object representing when to fire the notification or a number in Unix epoch time. Example: (new Date()).getTime() + 1000 is one second from now.
+            time: t, // (date or number) — A Date object representing when to fire the notification or a number in Unix epoch time. Example: (new Date()).getTime() + 1000 is one second from now.
+            repeat: 'day'
           };
-        Notifications.scheduleLocalNotificationAsync(localNotification, schedulingOptions);
+        //Notifications.scheduleLocalNotificationAsync(localNotification, schedulingOptions);
+        Notifications.presentLocalNotificationAsync(localNotification);
 
     }
 
     _handleNotification = (notification) => {
       this.setState({notification: notification});
+      //alert(`You've clicked '${notification.title}'`);
     };
 
     async componentDidMount() {
