@@ -9,7 +9,8 @@ export const colors = {
     teal: '#42988F',
     green: '#B1C592',
     yellow: '#F1DDBA',
-    pink: '#FB718A'
+    pink: '#FB718A',
+    white: '#EEEEFF'
 };
 
 export default StyleSheet.create({
@@ -27,7 +28,7 @@ export default StyleSheet.create({
     scrollview: {
         flex: 1,
         paddingTop: 50,
-        backgroundColor: 'rgba(112, 66, 20, 0.6)'
+        backgroundColor: 'rgba(64, 34, 60, 0.6)'
     },
     scrollviewContentContainer: {
         paddingBottom: 50
@@ -38,7 +39,7 @@ export default StyleSheet.create({
     title: {
         paddingHorizontal: 30,
         backgroundColor: 'transparent',
-        color: colors.black,
+        color: colors.white,
         fontSize: 36,
         fontWeight: 'bold',
         textAlign: 'center'
@@ -47,7 +48,7 @@ export default StyleSheet.create({
         marginTop: 5,
         paddingHorizontal: 30,
         backgroundColor: 'transparent',
-        color: colors.black,
+        color: colors.white,
         fontSize: 20,
         fontStyle: 'italic',
         textAlign: 'center'

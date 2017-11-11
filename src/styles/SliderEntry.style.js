@@ -33,7 +33,7 @@ export default StyleSheet.create({
         borderBottomRightRadius: entryBorderRadius
     },
     imageContainerEven: {
-        backgroundColor: colors.black
+        backgroundColor: colors.white
     },
     image: {
         ...StyleSheet.absoluteFillObject,
@@ -75,7 +75,7 @@ export default StyleSheet.create({
         bottom: 0,
         left: entryBorderRadius,
         right: 0,
-        backgroundColor: 'rgba(176, 74, 176, 0.5)',
+        backgroundColor: 'rgba(251, 113, 138, 0.5)',
         borderBottomLeftRadius: entryBorderRadius,
         borderBottomRightRadius: entryBorderRadius,
         borderTopLeftRadius: entryBorderRadius,
@@ -95,7 +95,7 @@ export default StyleSheet.create({
         bottom: 0,
         left: entryBorderRadius,
         right: 0,
-        backgroundColor: 'rgba(176, 74, 176, 0.5)',
+        backgroundColor: 'rgba(251, 113, 138, 0.5)',
         borderBottomLeftRadius: entryBorderRadius,
         borderBottomRightRadius: entryBorderRadius,
         borderTopLeftRadius: entryBorderRadius,

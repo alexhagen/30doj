@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, StatusBar } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { View, ScrollView, Text, StatusBar, Platform, Alert } from 'react-native';
+//import LinearGradient from 'react-native-linear-gradient';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from 'example/src/styles/SliderEntry.style';
 import SliderEntry from 'example/src/components/SliderEntry';
 import styles, { colors } from 'example/src/styles/index.style';
 //import { ENTRIES1 } from 'example/src/static/entries';
-import { Video } from 'expo';
+import { Video, LinearGradient } from 'expo';
 import { Constants, Permissions, Notifications } from 'expo';
+//import  { DateCounterView } from 'react-native-flip-clock';
 
 const SLIDER_1_FIRST_ITEM = 0;
 
@@ -23,12 +24,13 @@ async function getvals(){
     })
     .then((response) => response.json())
     .then((responseData) => {
-      console.log(responseData);
+      //console.log(responseData);
       return responseData;
     })
     .catch(error => console.warn(error));
     return result;
   }
+
 
 
 
@@ -44,42 +46,79 @@ export default class example extends Component {
             slideentries: ENTRIES1
         };
         this.getEntries();
-        const localNotification = {
-            title: 'x',
-            body: 'y', // (string) — body text of the notification.
-            ios: { // (optional) (object) — notification configuration specific to iOS.
-              sound: true // (optional) (boolean) — if true, play a sound. Default: false.
-            },
-        android: // (optional) (object) — notification configuration specific to Android.
-            {
-              sound: true, // (optional) (boolean) — if true, play a sound. Default: false.
-              //icon (optional) (string) — URL of icon to display in notification drawer.
-              //color (optional) (string) — color of the notification icon in notification drawer.
-              priority: 'high', // (optional) (min | low | high | max) — android may present notifications according to the priority, for example a high priority notification will likely to be shown as a heads-up notification.
-              sticky: false, // (optional) (boolean) — if true, the notification will be sticky and not dismissable by user. The notification must be programmatically dismissed. Default: false.
-              vibrate: true // (optional) (boolean or array) — if true, vibrate the device. An array can be supplied to specify the vibration pattern, e.g. - [ 0, 500 ].
-              // link (optional) (string) — external link to open when notification is selected.
-            }
-          };
-        let t = new Date();
-        t.setSeconds(t.getSeconds() + 10);
-        const schedulingOptions = {
-            time: t, // (date or number) — A Date object representing when to fire the notification or a number in Unix epoch time. Example: (new Date()).getTime() + 1000 is one second from now.
-            repeat: 'day'
-          };
-        //Notifications.scheduleLocalNotificationAsync(localNotification, schedulingOptions);
-        Notifications.presentLocalNotificationAsync(localNotification);
+    }
 
+    set_notification() {
+      for (var i = 0; i < ENTRIES1.length; i++){
+        var datetime = ENTRIES1[i]['datetime'];
+        var title = ENTRIES1[i]['title'];
+        var subtitle = ENTRIES1[i]['subtitle'];
+        var instruction = ENTRIES1[i]['instruction'];
+        console.log(datetime);
+        now = new Date();
+        var d = Date.parse(datetime);
+        then = new Date(d);
+
+        if(d >= now.getTime()){
+          if (then.getDate() == now.getDate()){
+            Notifications.scheduleLocalNotificationAsync(
+              {
+                title: 'You have a new gift/activity!',
+                body: `Open the app to check! The title is "${title}", with clue "${instruction}"`,
+                data: {
+                  hello: 'You have a new gift/activity!',
+                  future: `Open the app to check! The title is "${title}", with clue "${instruction}"`,
+                },
+                ios: {
+                  sound: true,
+                },
+                android: {
+                  vibrate: true,
+                },
+              },
+              {
+                time: d,
+              }
+            );
+          }
+        }
+      }
     }
 
     async getEntries(){
       ENTRIES1 = await getvals();
       this.setState({ slideentries: ENTRIES1});
+      this.set_notification();
     }
 
-    _handleNotification = (notification) => {
-      this.setState({notification: notification});
-      //alert(`You've clicked '${notification.title}'`);
+    _handleNotification = notification => {
+      let { data, origin, remote } = notification;
+      if (typeof data === 'string') {
+        data = JSON.parse(data);
+      }
+
+      /**
+       * Currently on Android this will only fire when selected for local
+       * notifications, and there is no way to distinguish between local
+       * and remote notifications
+       */
+
+      let message;
+      if (Platform.OS === 'android') {
+        message = `Notification ${origin} with data: ${JSON.stringify(data)}`;
+      } else {
+        if (remote) {
+          message = `Push notification ${origin} with data: ${JSON.stringify(data)}`;
+        } else {
+          title = data['hello']
+          message = data['future'];
+        }
+      }
+
+      // Calling alert(message) immediately fails to show the alert on Android
+      // if after backgrounding the app and then clicking on a notification
+      // to foreground the app
+      setTimeout(() => Alert.alert(title, message), 1000);
     };
 
     async componentDidMount() {
@@ -89,6 +128,11 @@ export default class example extends Component {
        console.log('Notification permissions granted.')
       }
       this._notificationSubscription = Notifications.addListener(this._handleNotification);
+    }
+
+    componentWillUnmount() {
+      this._notificationSubscription && this._notificationSubscription.remove();
+      this._tabPressedListener.remove();
     }
 
 
@@ -119,7 +163,7 @@ export default class example extends Component {
             <View style={styles.exampleContainer}>
                 <Text style={styles.title}>The 30 Days of Justine</Text>
                 <Text style={styles.subtitle}>
-                    These will come available as the day comes!
+                    Check the slides below for every days present or activity!
                 </Text>
                 <Carousel
                   ref={(c) => { if (!this.state.slider1Ref) { this.setState({ slider1Ref: c }); } }}
@@ -128,7 +172,6 @@ export default class example extends Component {
                   sliderWidth={sliderWidth}
                   itemWidth={itemWidth}
                   hasParallaxImages={true}
-                  firstItem={SLIDER_1_FIRST_ITEM}
                   inactiveSlideScale={0.94}
                   inactiveSlideOpacity={0.7}
                   enableMomentum={false}
@@ -136,8 +179,8 @@ export default class example extends Component {
                   contentContainerCustomStyle={styles.sliderContentContainer}
                   loop={true}
                   loopClonesPerSide={2}
-                  autoplay={false}
-                  autoplayDelay={500}
+                  autoplay={true}
+                  autoplayDelay={0}
                   autoplayInterval={3000}
                   onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
                 />
@@ -166,7 +209,7 @@ export default class example extends Component {
                   barStyle={'light-content'}
                 />
                 <Video
-                  source={ require('./vid2.mp4') }
+                  source={ require('./vid1.mp4') }
                   rate={1.0}
                   volume={1.0}
                   muted={true}
