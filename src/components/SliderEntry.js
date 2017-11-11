@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import { ParallaxImage } from 'react-native-snap-carousel';
 import styles from 'example/src/styles/SliderEntry.style';
+import * as Progress from 'react-native-progress';
 
 export default class SliderEntry extends Component {
 
@@ -42,42 +43,103 @@ export default class SliderEntry extends Component {
         );
     }
 
-    render () {
-        const { data: { title, subtitle, number }, even } = this.props;
-
-        const uppercaseTitle = title ? (
-            <View style={styles.numberContainer}>
-            <Text style={styles.number} >
-              Day {number}
-            </Text>
+    get innerslider () {
+      const { data: { illustration, number, month, date, subtitle, datetime }, parallax, parallaxProps, even } = this.props;
+      now = new Date();
+      var d = Date.parse(datetime);
+      then = new Date(d);
+      if (then.getHours() > 12) {
+        timestring = (then.getHours() - 12) + ":00 pm";
+      } else {
+        timestring = then.getHours() + ":00 am";
+      }
+      if(d < now.getTime()){
+        return (<View style={styles.textContainer}>
+            { this.uppercaseTitle }
             <Text
-              style={styles.title}
+              style={styles.subtitle}
               numberOfLines={2}
             >
-                { title }
+                { subtitle }
             </Text>
-            </View>
-        ) : false;
+        </View>);
+      } else {
+        if (then.getDate() == now.getDate()){
+          return (<View style={styles.progresstextContainer}>
+              <Text style={styles.futureNumber}>
+                Day {number}
+              </Text>
+              <Text style={styles.futureDate}>
+               {month} {date}
+              </Text>
+              <Text style={styles.futureTime}>
+                {timestring}
+              </Text>
+              <Progress.Bar style={styles.progressbar} width={100} progress={0.3} />
+          </View>);
+        } else {
+          return(
+          <View style={styles.futuretextContainer}>
+            <Text style={styles.futureNumber}>
+              Day {number}
+            </Text>
+            <Text style={styles.futureDate}>
+             {month} {date}
+            </Text>
+          </View>
+        );
+        }
+      }
+    }
+    get uppercaseTitle() {
+      const { data: {title, number, subtitle} } = this.props;
+      return (
+        <View style={styles.numberContainer}>
+        <Text style={styles.number} >
+          Day {number}
+        </Text>
+        <Text
+          style={styles.title}
+          numberOfLines={2}
+        >
+            { title }
+        </Text>
+
+        </View>
+    );
+  }
+
+    get clickedcontainer() {
+      const { data: { title, datetime }} = this.props;
+      now = new Date();
+      var d = Date.parse(datetime);
+      then = new Date(d);
+      if (then.getHours() > 12) {
+        timestring = (then.getHours() - 12) + ":00 pm";
+      } else {
+        timestring = then.getHours() + ":00 am";
+      }
+      if(d < now.getTime()){
+        Alert.alert('New Clue Time', `You've clicked '${title}'`);
+      } else {
+        Alert.alert('Whoa Nelly!', `Hold your horses!`);
+      }
+    }
+
+    render () {
+        const { data: { title, subtitle, number, datetime }, even } = this.props;
 
         return (
             <TouchableOpacity
               activeOpacity={1}
               style={styles.slideInnerContainer}
-              onPress={() => { alert(`You've clicked '${title}'`); }}
+              onPress={() => { this.clickedcontainer }}
               >
                 <View style={styles.imageContainer}>
                     { this.image }
                     <View style={styles.radiusMask} />
                 </View>
-                <View style={styles.textContainer}>
-                    { uppercaseTitle }
-                    <Text
-                      style={styles.subtitle}
-                      numberOfLines={2}
-                    >
-                        { subtitle }
-                    </Text>
-                </View>
+                { this.innerslider }
             </TouchableOpacity>
         );
     }

@@ -26,9 +26,11 @@ export default StyleSheet.create({
     },
     imageContainer: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
         borderTopLeftRadius: entryBorderRadius,
-        borderTopRightRadius: entryBorderRadius
+        borderTopRightRadius: entryBorderRadius,
+        borderBottomLeftRadius: entryBorderRadius,
+        borderBottomRightRadius: entryBorderRadius
     },
     imageContainerEven: {
         backgroundColor: colors.black
@@ -36,9 +38,10 @@ export default StyleSheet.create({
     image: {
         ...StyleSheet.absoluteFillObject,
         resizeMode: 'cover',
-        borderRadius: Platform.OS === 'ios' ? entryBorderRadius : 0,
         borderTopLeftRadius: entryBorderRadius,
-        borderTopRightRadius: entryBorderRadius
+        borderTopRightRadius: entryBorderRadius,
+        borderBottomLeftRadius: entryBorderRadius,
+        borderBottomRightRadius: entryBorderRadius
     },
     // image's border radius is buggy on ios; let's hack it!
     radiusMask: {
@@ -47,7 +50,7 @@ export default StyleSheet.create({
         left: 0,
         right: 0,
         height: entryBorderRadius,
-        backgroundColor: 'white'
+        backgroundColor: 'transparent'
     },
     radiusMaskEven: {
         backgroundColor: colors.black
@@ -60,6 +63,58 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         borderBottomLeftRadius: entryBorderRadius,
         borderBottomRightRadius: entryBorderRadius
+    },
+    progresstextContainer: {
+        justifyContent: 'center',
+        paddingTop: 10 - entryBorderRadius,
+        paddingBottom: 20,
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: entryBorderRadius,
+        right: 0,
+        backgroundColor: 'rgba(176, 74, 176, 0.5)',
+        borderBottomLeftRadius: entryBorderRadius,
+        borderBottomRightRadius: entryBorderRadius,
+        borderTopLeftRadius: entryBorderRadius,
+        borderTopRightRadius: entryBorderRadius
+    },
+    progressbar: {
+      justifyContent: 'center'
+    },
+    futuretextContainer: {
+        justifyContent: 'center',
+        paddingTop: 10 - entryBorderRadius,
+        paddingBottom: 20,
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: entryBorderRadius,
+        right: 0,
+        backgroundColor: 'rgba(176, 74, 176, 0.5)',
+        borderBottomLeftRadius: entryBorderRadius,
+        borderBottomRightRadius: entryBorderRadius,
+        borderTopLeftRadius: entryBorderRadius,
+        borderTopRightRadius: entryBorderRadius
+    },
+    futureNumber: {
+      textAlign: "center",
+      fontSize: 40,
+      color: colors.black,
+    },
+    futureDate: {
+      textAlign: "center",
+      fontSize: 28,
+      color: colors.black
+    },
+    futureTime: {
+      textAlign: "center",
+      fontSize: 28,
+      color: colors.black
     },
     title: {
         color: colors.black,
@@ -88,6 +143,6 @@ export default StyleSheet.create({
       marginTop: 0
     },
     subtitleEven: {
-        color: 'rgba(255, 255, 255, 0.7)'
+        color: 'rgba(255, 255, 255, 0.8)'
     }
 });

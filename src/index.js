@@ -8,15 +8,15 @@ import styles, { colors } from 'example/src/styles/index.style';
 //import { ENTRIES1 } from 'example/src/static/entries';
 import { Video } from 'expo';
 import { Constants, Permissions, Notifications } from 'expo';
-import * as Progress from 'react-native-progress';
 
 const SLIDER_1_FIRST_ITEM = 0;
 
 async function getvals(){
-    let result = await fetch('https://gist.githubusercontent.com/alexhagen/da70c9cd16341f2d8c5ff658099ca86f/raw/3b68ba4d82c4f726dcb999e4d95b6048cdb570e5/entries.json',
+    let result = await fetch('https://alexhagen.github.io/30doj/entries.json',
     {
     	method: "GET",
       headers: {
+        'Cache-Control': 'no-cache',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
@@ -121,7 +121,6 @@ export default class example extends Component {
                 <Text style={styles.subtitle}>
                     These will come available as the day comes!
                 </Text>
-                <Progress.Bar progress={0.3} width={200} />
                 <Carousel
                   ref={(c) => { if (!this.state.slider1Ref) { this.setState({ slider1Ref: c }); } }}
                   data={this.state.slideentries}

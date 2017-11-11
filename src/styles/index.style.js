@@ -4,7 +4,12 @@ export const colors = {
     black: '#142735',
     gray: '#888888',
     background1: '#DDDDDD',
-    background2: '#21D4FD'
+    background2: '#21D4FD',
+    purple: '#40223C',
+    teal: '#42988F',
+    green: '#B1C592',
+    yellow: '#F1DDBA',
+    pink: '#FB718A'
 };
 
 export default StyleSheet.create({
@@ -22,7 +27,7 @@ export default StyleSheet.create({
     scrollview: {
         flex: 1,
         paddingTop: 50,
-        backgroundColor: 'rgba(255, 255, 255, 0.5)'
+        backgroundColor: 'rgba(112, 66, 20, 0.6)'
     },
     scrollviewContentContainer: {
         paddingBottom: 50
