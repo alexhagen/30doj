@@ -5,21 +5,45 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from 'example/src/styles/SliderEntry.style';
 import SliderEntry from 'example/src/components/SliderEntry';
 import styles, { colors } from 'example/src/styles/index.style';
-import { ENTRIES1 } from 'example/src/static/entries';
+//import { ENTRIES1 } from 'example/src/static/entries';
 import { Video } from 'expo';
 import { Constants, Permissions, Notifications } from 'expo';
+import * as Progress from 'react-native-progress';
 
 const SLIDER_1_FIRST_ITEM = 0;
+
+async function getvals(){
+    let result = await fetch('https://gist.githubusercontent.com/alexhagen/da70c9cd16341f2d8c5ff658099ca86f/raw/3b68ba4d82c4f726dcb999e4d95b6048cdb570e5/entries.json',
+    {
+    	method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData);
+      return responseData;
+    })
+    .catch(error => console.warn(error));
+    return result;
+  }
+
+
 
 export default class example extends Component {
 
     constructor (props) {
         super(props);
+        ENTRIES1 = [];
         this.state = {
             slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
             slider1Ref: null,
             notification: {},
+            slideentries: ENTRIES1
         };
+        this.getEntries();
         const localNotification = {
             title: 'x',
             body: 'y', // (string) — body text of the notification.
@@ -46,6 +70,11 @@ export default class example extends Component {
         //Notifications.scheduleLocalNotificationAsync(localNotification, schedulingOptions);
         Notifications.presentLocalNotificationAsync(localNotification);
 
+    }
+
+    async getEntries(){
+      ENTRIES1 = await getvals();
+      this.setState({ slideentries: ENTRIES1});
     }
 
     _handleNotification = (notification) => {
@@ -83,18 +112,19 @@ export default class example extends Component {
         );
     }
 
-    get example1 () {
-        const { slider1ActiveSlide, slider1Ref } = this.state;
 
+    get example1 () {
+        const { slider1ActiveSlide, slider1Ref, slideentries } = this.state;
         return (
             <View style={styles.exampleContainer}>
                 <Text style={styles.title}>The 30 Days of Justine</Text>
                 <Text style={styles.subtitle}>
                     These will come available as the day comes!
                 </Text>
+                <Progress.Bar progress={0.3} width={200} />
                 <Carousel
                   ref={(c) => { if (!this.state.slider1Ref) { this.setState({ slider1Ref: c }); } }}
-                  data={ENTRIES1}
+                  data={this.state.slideentries}
                   renderItem={this._renderItemWithParallax}
                   sliderWidth={sliderWidth}
                   itemWidth={itemWidth}
@@ -113,7 +143,7 @@ export default class example extends Component {
                   onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
                 />
                 <Pagination
-                  dotsLength={ENTRIES1.length}
+                  dotsLength={30}
                   activeDotIndex={slider1ActiveSlide}
                   containerStyle={styles.paginationContainer}
                   dotColor={'rgba(255, 255, 255, 0.92)'}

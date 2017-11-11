@@ -1,18 +1,20 @@
-export const ENTRIES1 = [
+
+async function getvals(){
+    let result = await fetch('https://gist.githubusercontent.com/alexhagen/da70c9cd16341f2d8c5ff658099ca86f/raw/9252d920fef40aec2bb3b3d944d500e2fe5bd7aa/entries.json',
     {
-        title: 'Beautiful and dramatic Antelope Canyon',
-        subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-        illustration: 'http://i.imgur.com/UYiroysl.jpg',
-        number: '1',
-        month: 'November',
-        date: '11th'
-    },
-    {
-        title: 'Earlier this morning, NYC',
-        subtitle: 'Lorem ipsum dolor sit amet',
-        illustration: 'http://i.imgur.com/UPrs1EWl.jpg',
-        number: '2',
-        month: 'November',
-        date: '12th'
-    }
-];
+    	method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData);
+      return responseData;
+    })
+    .catch(error => console.warn(error));
+    return result;
+  }
+
+export var ENTRIES1 = getvals();
