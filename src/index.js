@@ -6,7 +6,7 @@ import { sliderWidth, itemWidth } from 'example/src/styles/SliderEntry.style';
 import SliderEntry from 'example/src/components/SliderEntry';
 import styles, { colors } from 'example/src/styles/index.style';
 //import { ENTRIES1 } from 'example/src/static/entries';
-import { Video, LinearGradient } from 'expo';
+import { Video, LinearGradient, Asset } from 'expo';
 import { Constants, Permissions, Notifications } from 'expo';
 //import  { DateCounterView } from 'react-native-flip-clock';
 
@@ -43,7 +43,8 @@ export default class example extends Component {
             slider1ActiveSlide: SLIDER_1_FIRST_ITEM,
             slider1Ref: null,
             notification: {},
-            slideentries: ENTRIES1
+            slideentries: ENTRIES1,
+            videonumber: Asset.fromModule(require('./vid1.mp4'))
         };
         this.getEntries();
     }
@@ -156,6 +157,32 @@ export default class example extends Component {
         );
     }
 
+    check_video(index) {
+      this.setState({ slider1ActiveSlide: index });
+      //console.log(ENTRIES1[index]['number']);
+      var number = parseInt(ENTRIES1[index]['number']);
+      console.log(number);
+
+      if (number < 10) {
+        if (this.state.videonumber != './vid1.mp4'){
+        this.setState({ videonumber: Asset.fromModule(require('./vid1.mp4')) });
+        console.log(this.state.videonumber);
+      }
+      } else {
+        if (number < 20) {
+          if (this.state.videonumber != './vid2.mp4'){
+          this.setState({ videonumber: Asset.fromModule(require('./vid2.mp4')) });
+          console.log(this.state.videonumber);
+        }
+        } else {
+          if (this.state.videonumber != './vid3.mp4'){
+          this.setState({ videonumber: Asset.fromModule(require('./vid3.mp4')) });
+          console.log(this.state.videonumber);
+        }
+        }
+      }
+    }
+
 
     get example1 () {
         const { slider1ActiveSlide, slider1Ref, slideentries } = this.state;
@@ -179,10 +206,10 @@ export default class example extends Component {
                   contentContainerCustomStyle={styles.sliderContentContainer}
                   loop={true}
                   loopClonesPerSide={2}
-                  autoplay={true}
+                  autoplay={false}
                   autoplayDelay={0}
                   autoplayInterval={3000}
-                  onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
+                  onSnapToItem={(index) => this.check_video(index) }
                 />
                 <Pagination
                   dotsLength={30}
@@ -209,7 +236,7 @@ export default class example extends Component {
                   barStyle={'light-content'}
                 />
                 <Video
-                  source={ require('./vid1.mp4') }
+                  source={ this.state.videonumber }
                   rate={1.0}
                   volume={1.0}
                   muted={true}
