@@ -126,7 +126,19 @@ export default class SliderEntry extends Component {
       if(d < now.getTime()){
         Alert.alert(`New Clue: ${title}`, instruction);
       } else {
-        Alert.alert('Whoa Nelly!', `Hold your horses!`);
+        var r = Math.floor(Math.random() * 5.0)
+        if (r == 0.0){
+          Alert.alert('Whoa Nelly!', `Hold your horses!`);
+        } else if (r == 1.0) {
+          Alert.alert('Please Wait.', `Please kindly wait while your experience is loading...`);
+        } else if (r == 2.0) {
+          Alert.alert('Chill Out!', `You have to wait until you can get this present!`);
+        } else if (r == 3.0) {
+          Alert.alert('Back Off!', `You're making me anxious with all your asking!`);
+        } else if (r == 4.0) {
+          Alert.alert('Are we there yet?', `Nope, not quite yet, you'll have to wait for a day or two!`);
+        }
+
       }
     }
 

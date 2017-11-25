@@ -10,7 +10,7 @@ import { Video, LinearGradient, Asset } from 'expo';
 import { Constants, Permissions, Notifications } from 'expo';
 //import  { DateCounterView } from 'react-native-flip-clock';
 
-const SLIDER_1_FIRST_ITEM = 0;
+const SLIDER_1_FIRST_ITEM = 15;
 
 async function getvals(){
     let result = await fetch('https://alexhagen.github.io/30doj/entries.json',
@@ -162,20 +162,19 @@ export default class example extends Component {
       //console.log(ENTRIES1[index]['number']);
       var number = parseInt(ENTRIES1[index]['number']);
       console.log(number);
-
       if (number < 10) {
-        if (this.state.videonumber != './vid1.mp4'){
+        if (this.state.videonumber != Asset.fromModule(require('./vid1.mp4'))){
         this.setState({ videonumber: Asset.fromModule(require('./vid1.mp4')) });
         console.log(this.state.videonumber);
       }
       } else {
         if (number < 20) {
-          if (this.state.videonumber != './vid2.mp4'){
+          if (this.state.videonumber != Asset.fromModule(require('./vid2.mp4'))){
           this.setState({ videonumber: Asset.fromModule(require('./vid2.mp4')) });
           console.log(this.state.videonumber);
         }
         } else {
-          if (this.state.videonumber != './vid3.mp4'){
+          if (this.state.videonumber != Asset.fromModule(require('./vid3.mp4'))){
           this.setState({ videonumber: Asset.fromModule(require('./vid3.mp4')) });
           console.log(this.state.videonumber);
         }
@@ -199,29 +198,14 @@ export default class example extends Component {
                   sliderWidth={sliderWidth}
                   itemWidth={itemWidth}
                   hasParallaxImages={true}
-                  inactiveSlideScale={0.94}
-                  inactiveSlideOpacity={0.7}
                   enableMomentum={false}
+                  firstItem={SLIDER_1_FIRST_ITEM}
                   containerCustomStyle={styles.slider}
                   contentContainerCustomStyle={styles.sliderContentContainer}
                   loop={true}
-                  loopClonesPerSide={2}
+                  loopClonesPerSide={4}
                   autoplay={false}
-                  autoplayDelay={0}
-                  autoplayInterval={3000}
                   onSnapToItem={(index) => this.check_video(index) }
-                />
-                <Pagination
-                  dotsLength={30}
-                  activeDotIndex={slider1ActiveSlide}
-                  containerStyle={styles.paginationContainer}
-                  dotColor={'rgba(255, 255, 255, 0.92)'}
-                  dotStyle={styles.paginationDot}
-                  inactiveDotColor={colors.black}
-                  inactiveDotOpacity={0.4}
-                  inactiveDotScale={0.6}
-                  carouselRef={slider1Ref}
-                  tappableDots={!!slider1Ref}
                 />
             </View>
         );
@@ -238,7 +222,7 @@ export default class example extends Component {
                 <Video
                   source={ this.state.videonumber }
                   rate={1.0}
-                  volume={1.0}
+                  volume={0.0}
                   muted={true}
                   resizeMode="cover"
                   shouldPlay
