@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"aws-sdk": "^2.149.0",
-		"expo": "^22.0.2",
+		"expo": "^22.0.4",
 		"prop-types": "^15.6.0",
 		"react": "16.0.0-beta.5",
 		"react-native": "https://github.com/expo/react-native/archive/sdk-22.0.0.tar.gz",
@@ -25,7 +25,7 @@
 		"react-native-modal": "^4.1.1",
 		"react-native-notifications": "^1.1.17",
 		"react-native-progress": "^3.4.0",
-		"react-native-push-notification": "^3.0.1",
+		"react-native-push-notification": "^3.0.2",
 		"react-native-smart-toast": "^1.1.1",
 		"react-native-snap-carousel": "3.3.3",
 		"react-native-video": "^2.0.0"
@@ -34,7 +34,7 @@
 		"babel-jest": "21.2.0",
 		"babel-preset-react-native": "4.0.0",
 		"jest": "21.2.1",
-		"jest-expo": "^22.0.1-SNAPSHOT.2017.11.1",
+		"jest-expo": "^22.0.1",
 		"react-native-scripts": "1.7.0",
 		"react-test-renderer": "16.0.0-beta.5"
 	},
